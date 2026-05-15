@@ -27,6 +27,7 @@
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#career" class="nav-link">Career</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#expertise" class="nav-link">Expertise</a></li>
@@ -348,7 +349,193 @@
             <div class="skill-progress" data-progress="90"></div>
           </div>
   </section>
+<style>
+  #experience {
+    padding: 100px 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    scroll-margin-top: 80px;
+  }
 
+  .exp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .exp-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .exp-subtitle {
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+  }
+
+  .exp-title {
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  .category-title {
+    color: #c5a059;
+    font-size: 24px;
+    border-bottom: 1px solid #1f1f1f;
+    padding-bottom: 10px;
+    margin: 40px 0 25px 0;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+  }
+
+  .exp-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .exp-card {
+    background: #111111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 30px;
+    transition: 0.3s ease;
+    position: relative;
+    height: 100%;
+  }
+
+  .exp-card:hover {
+    border-color: #c5a059;
+    transform: translateY(-8px);
+    background: #161616;
+  }
+
+  /* Logo Styling */
+  .company-logo {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #1a1a1a;
+    padding: 5px;
+    border: 1px solid #333;
+  }
+
+  .exp-date {
+    color: #c5a059;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .exp-role {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 5px;
+    padding-right: 60px; /* Space for logo */
+  }
+
+  .exp-org {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 15px;
+  }
+
+  .cert-badge {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #c5a059;
+    transition: 0.3s;
+  }
+
+  .exp-card:hover .cert-badge {
+    text-decoration: underline;
+  }
+
+  .exp-desc {
+    color: #aaaaaa;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+</style>
+
+<section id="experience">
+  <div class="exp-container">
+    <div class="exp-header">
+      <span class="exp-subtitle">My Credentials</span>
+      <h2 class="exp-title">Professional Journey</h2>
+    </div>
+
+    <h3 class="category-title">01. Internships</h3>
+    <div class="exp-grid">
+      <a href="your-cert-link-1.pdf" target="_blank" class="exp-link">
+        <div class="exp-card">
+          <img src="logo-decodelabs.png" alt="Logo" class="company-logo">
+          <span class="exp-date">MAY 2026 - PRESENT</span>
+          <h3 class="exp-role">UI/UX Design Intern</h3>
+          <p class="exp-org">DecodeLabs</p>
+          <p class="exp-desc">Crafting user-centric interfaces and immersive digital storytelling environments.</p>
+          <span class="cert-badge">View Certificate &rarr;</span>
+        </div>
+      </a>
+
+      <a href="your-cert-link-2.pdf" target="_blank" class="exp-link">
+        <div class="exp-card">
+          <img src="logo-codealpha.png" alt="Logo" class="company-logo">
+          <span class="exp-date">APR 2026 - MAY 2026</span>
+          <h3 class="exp-role">Web Engineering Intern</h3>
+          <p class="exp-org">CodeAlpha</p>
+          <p class="exp-desc">Implementing AI-augmented workflows and enterprise-grade web systems.</p>
+          <span class="cert-badge">View Certificate &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <h3 class="category-title">02. Company Experience</h3>
+    <div class="exp-grid">
+      <a href="#" class="exp-link">
+        <div class="exp-card">
+          <img src="logo-ayesha-tech.png" alt="Logo" class="company-logo">
+          <span class="exp-date">APR 2026 - PRESENT</span>
+          <h3 class="exp-role">Founder & Digital Solutions Architect</h3>
+          <p class="exp-org">Ayesha Tech Services</p>
+          <p class="exp-desc">Leading full-stack development projects and high-impact design solutions for clients.</p>
+          <span class="cert-badge">View Profile &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <h3 class="category-title">03. Software House</h3>
+    <div class="exp-grid">
+      <a href="your-software-house-cert.pdf" target="_blank" class="exp-link">
+        <div class="exp-card">
+          <img src="logo-software-house.png" alt="Logo" class="company-logo">
+          <span class="exp-date">PROJECT BASED</span>
+          <h3 class="exp-role">Creative Technologist</h3>
+          <p class="exp-org">Collaborative Projects</p>
+          <p class="exp-desc">Technical collaboration on complex algorithmic systems and Java-based online negotiation logic.</p>
+          <span class="cert-badge">View Reference &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
   <!-- Services Section -->
   <section class="section section-alt" id="services">
     <div class="container">
@@ -665,7 +852,93 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
       </div>
     </div>
   </section>
+<style>
+  .client-marquee-wrapper {
+    background-color: #000000; 
+    padding: 80px 0;
+    overflow: hidden;
+    border-top: 1px solid #1a1a1a;
+  }
 
+  .client-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .client-header p {
+    color: #c5a059; 
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .client-header h2 {
+    color: #ffffff;
+    font-size: 36px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content; 
+    animation: scrollLogos 25s linear infinite;
+    align-items: center;
+  }
+
+  .logo-item {
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-item img {
+    width: 150px; 
+    height: auto;
+    max-height: 60px; 
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-item img:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<div class="client-marquee-wrapper">
+  <div class="client-header">
+    <p>Partnerships</p>
+    <h2>Happy Clients</h2>
+  </div>
+
+  <div class="marquee-track">
+    <div class="logo-item">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/1280px-LinkedIn_Logo.svg.png" alt="LinkedIn"></div>
+    <div class="logo-item"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google"></div>
+    <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Fiverr_Logo_09.2020.svg" alt="Fiverr"></div>
+    <div class="logo-item"><img src="https://www.vectorlogo.zone/logos/upwork/upwork-ar21.svg" alt="Upwork"></div>
+<div class="logo-item">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/1280px-LinkedIn_Logo.svg.png" alt="LinkedIn"></div>
+    <div class="logo-item"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google"></div>
+    <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Fiverr_Logo_09.2020.svg" alt="Fiverr"></div>
+    <div class="logo-item"><img src="https://www.vectorlogo.zone/logos/upwork/upwork-ar21.svg" alt="Upwork"></div>
+<div class="logo-item"><img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify"></div>
+<div class="logo-item">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+</div>
+
+
+
+  </div>
+  
+</div>
   <!-- Testimonials Section -->
   <section class="section section-alt" id="testimonials">
     <div class="container">
