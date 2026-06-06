@@ -297,70 +297,49 @@ textarea {
    Hero Section
    ======================================== */
 
+/* ========================================
+   Hero Section - Exactly Your Design
+   ======================================== */
+
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: var(--space-4xl) 0;
-  /* Background black and gold gradient */
   background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
   overflow: hidden;
 }
 
-/* Is section mein aapki PNG fit hogi */
 .hero::after {
   content: '';
   position: absolute;
   top: 0;
-  right: 0; /* Pic ko right side par rakhne ke liye */
-  width: 50%; /* Screen ka aadha hissa pic legi */
+  right: 0; 
+  width: 50%; 
   height: 100%;
-  background-image: url('Ash.jpeg'); /* Exact file name check karein */
-  background-size: contain; /* Pic kategi nahi, poori nazar ayegi */
+  background-image: url('Ash.jpeg'); 
+  background-size: contain; 
   background-position: bottom right;
   background-repeat: no-repeat;
-  z-index: 1;
-  opacity: 0.9; /* Thora sa blend karne ke liye */
+  z-index: 1; /* Pic peeche rahegi */
+  opacity: 0.9;
 }
 
-/* Content ko pic ke upar lane ke liye */
 .hero-content {
   position: relative;
-  z-index: 10;
+  z-index: 10; /* Text hamesha pic ke upar rahega */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
   width: 100%;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(201, 169, 98, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(201, 169, 98, 0.03) 0%, transparent 40%);
-  pointer-events: none;
-}
-
-.hero-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3xl);
-  align-items: center;
-}
-
 .hero-text {
   max-width: 700px;
 }
 
+/* Fix: variable syntax correct kar di (Sans Serif hataya) */
 .hero-greeting {
   font-size: 1rem;
   color: var(--color-accent);
@@ -373,8 +352,8 @@ textarea {
 }
 
 .hero-name {
-  font-family: Sans Serif(--font-display);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: var(--font-display); /* Fixed syntax */
+  font-size: clamp(2.5rem, 8vw, 6rem); /* Responsive font size */
   font-weight: 400;
   line-height: 1.1;
   margin-bottom: var(--space-md);
@@ -391,6 +370,46 @@ textarea {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+/* ========================================
+   ONLY RESPONSIVE FIXES (No Layout Change)
+   ======================================== */
+
+@media (max-width: 991px) {
+  .hero::after {
+    width: 70%; /* Tablet par pic thori si bari */
+    opacity: 0.5; /* Taake text par masla na ho */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 120px; /* Mobile header ke liye space */
+    display: block; /* Flex center hata diya taake mobile pe text upar se shuru ho */
+  }
+  
+  .hero::after {
+    width: 100%; /* Mobile pe pic poori background cover karegi */
+    opacity: 0.3; /* Light background image */
+    background-position: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    text-align: left; /* Aapka original left align design */
+  }
+  
+  .hero-name {
+    font-size: 3rem; /* Mobile ke liye fixed size taake bahar na nikal jaye */
+  }
+
+  .hero-social {
+    position: static; /* Fixed se hata kar normal flow mein */
+    flex-direction: row;
+    margin-top: 30px;
+    transform: none;
+  }
 }
 
 .hero-description {
