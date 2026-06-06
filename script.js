@@ -156,6 +156,111 @@ function initSkillBars() {
 }
 
 // ========================================
+// Luxury Portfolio - Optimized JS
+// ========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initMobileMenu();
+  initSmoothScroll();
+  initScrollReveal();
+  initSkillBars();
+  initTestimonialsSlider();
+  initContactForm();
+});
+
+// Navbar Scroll Effect
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+}
+
+// Mobile Menu Toggle (Fixed)
+function initMobileMenu() {
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  if (!navToggle || !navMenu) return;
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu when clicking links
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+// Scroll Reveal
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.section-header, .about-content, .project-card, .service-card');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealElements.forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+}
+
+// Smooth Scroll
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const headerOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+}
+
+// Skill Bars
+function initSkillBars() {
+  const progressBars = document.querySelectorAll('.skill-progress');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progress = entry.target.dataset.progress;
+        entry.target.style.width = progress + '%';
+      }
+    });
+  });
+  progressBars.forEach(bar => observer.observe(bar));
+}
+
+// Note: Testimonials aur Contact form ka logic aapki purani file wala hi same use hoga.
+
+// ========================================
 // Testimonials Slider
 // ========================================
 
