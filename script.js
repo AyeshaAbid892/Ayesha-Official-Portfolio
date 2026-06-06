@@ -361,3 +361,16 @@ function throttle(func, limit) {
     }
   };
 }
+
+// Modal Functionality
+const modal = document.getElementById('contactModal');
+const btn = document.getElementById('hireMeBtn');
+const span = document.getElementsByClassName('close-modal')[0];
+
+if(btn && modal) {
+    btn.addEventListener('click', () => modal.classList.add('show'));
+    span.addEventListener('click', () => modal.classList.remove('show'));
+    window.addEventListener('click', (e) => {
+        if (e.target == modal) modal.classList.remove('show');
+    });
+}
