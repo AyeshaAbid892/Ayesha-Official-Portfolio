@@ -1395,15 +1395,60 @@ textarea {
 }
 
 /* ========================================
-   Media Queries
+   Media Queries - FIXED FOR RESPONSIVE
    ======================================== */
 
-/* Tablet */
-@media (min-width: 768px) {
-  .nav-menu {
-    gap: var(--space-lg);
+/* Mobile & Tablet Styles (Jahan Hamburger chalega) */
+@media (max-width: 1023px) {
+  .nav-toggle {
+    display: flex !important;
+    z-index: 10001 !important; /* Takay hero section ke upar aaye */
+    position: relative;
+    cursor: pointer;
   }
 
+  .nav-menu {
+    position: fixed !important;
+    top: 0;
+    right: -100% !important; /* Pehle chhupa rahega */
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--color-bg, #111) !important; /* Dark luxury background */
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 100px var(--space-xl) var(--space-xl) !important;
+    transition: right var(--transition-base, 0.4s ease) !important;
+    gap: var(--space-md);
+    border-left: 1px solid var(--color-border);
+    z-index: 10000 !important;
+  }
+
+  /* JAB JS CLICK KARE TU IS SELECTOR SE MENU BAHAR AAYEGA */
+  .nav-menu.active {
+    right: 0 !important; /* Menu slide ho kar screen par aa jaye ga */
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: var(--space-sm) 0;
+    display: block;
+    width: 100%;
+  }
+
+  .hero-social {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    transform: none;
+    margin-top: var(--space-2xl);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.5s forwards;
+  }
+}
+
+/* Tablet (Grids and Layouts adjustment) */
+@media (min-width: 768px) {
   .about-content {
     grid-template-columns: 1fr 1.5fr;
   }
@@ -1441,8 +1486,27 @@ textarea {
   }
 }
 
-/* Desktop */
+/* True Desktop Only (Menu items inline/horizontal sirf 1024px se upar honge) */
 @media (min-width: 1024px) {
+  .nav-toggle {
+    display: none !important; /* Desktop par hamburger chhip jaye */
+  }
+
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-left: none !important;
+  }
+
+  .nav-menu {
+    gap: var(--space-lg);
+  }
+
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1456,48 +1520,6 @@ textarea {
   }
 }
 
-/* Mobile menu */
-@media (max-width: 1023px) {
-  .nav-toggle {
-    display: flex;
-    z-index: 1001;
-  }
-
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    max-width: 320px;
-    height: 100vh;
-    background-color: var(--color-bg);
-    flex-direction: column;
-    padding: 80px var(--space-xl) var(--space-xl);
-    transition: right var(--transition-base);
-    gap: var(--space-md);
-    border-left: 1px solid var(--color-border);
-  }
-
-  .nav-menu.active {
-    right: 0;
-  }
-
-  .nav-link {
-    font-size: 0.875rem;
-    padding: var(--space-sm) 0;
-  }
-
-  .hero-social {
-    position: static;
-    flex-direction: row;
-    justify-content: flex-start;
-    transform: none;
-    margin-top: var(--space-2xl);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 0.5s forwards;
-  }
-}
-
 /* Small mobile */
 @media (max-width: 480px) {
   :root {
@@ -1506,6 +1528,7 @@ textarea {
 
   .hero-buttons {
     flex-direction: column;
+    gap: var(--space-md);
   }
 
   .about-stats {
