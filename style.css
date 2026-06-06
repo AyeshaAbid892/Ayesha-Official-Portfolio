@@ -1690,3 +1690,31 @@ textarea {
 @media (max-width: 480px) {
     .contact-card-options { grid-template-columns: 1fr; }
 }
+
+/* Purani custom-modal styling waisi hi rahegi, bas niche ye do properties check kar lein */
+.custom-modal {
+    display: none; 
+    position: fixed;
+    z-index: 20000 !important;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Jab Hire Me par click ho tu automatic display show karega bina JavaScript ke */
+.custom-modal:target {
+    display: flex;
+}
+
+/* Close button ki text-decoration khatam karne ke liye */
+.close-modal {
+    position: absolute; 
+    right: 20px; 
+    top: 15px;
+    font-size: 30px; 
+    color: #c5a880; 
+    cursor: pointer;
+    text-decoration: none;
+}
