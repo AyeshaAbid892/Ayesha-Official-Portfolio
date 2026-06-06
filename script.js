@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialsSlider();
   initContactForm();
   initScrollReveal();
+  initHireMeModal(); // <--- Modal Initialization Call
 });
 
 // ========================================
@@ -329,48 +330,30 @@ function initScrollReveal() {
 }
 
 // ========================================
-// Utility Functions
+// Hire Me Premium Modal Function
 // ========================================
+function initHireMeModal() {
+  const modal = document.getElementById('contactModal');
+  const btn = document.getElementById('hireMeBtn');
+  const closeBtn = document.querySelector('.close-modal');
 
-// Debounce function for performance
-function debounce(func, wait = 10, immediate = true) {
-  let timeout;
-  return function() {
-    const context = this, args = arguments;
-    const later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-  let inThrottle;
-  return function() {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  };
-}
-
-// Modal Functionality
-const modal = document.getElementById('contactModal');
-const btn = document.getElementById('hireMeBtn');
-const span = document.getElementsByClassName('close-modal')[0];
-
-if(btn && modal) {
-    btn.addEventListener('click', () => modal.classList.add('show'));
-    span.addEventListener('click', () => modal.classList.remove('show'));
-    window.addEventListener('click', (e) => {
-        if (e.target == modal) modal.classList.remove('show');
+  if (btn && modal) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('show');
     });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+  }
+
+  // Window par click karne se modal close ho jaye
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('show');
+    }
+  });
 }
