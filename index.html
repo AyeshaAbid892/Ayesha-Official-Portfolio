@@ -39,6 +39,25 @@
     </div>
   </nav>
 
+  <script>
+  // Force test logic direct in HTML
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('navMenu');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Doosre clicks ko rokne ke liye
+        menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        console.log("Hamburger Clicked! Active class status:", menu.classList.contains('active'));
+      });
+    } else {
+      console.log("Elements not found! Toggle:", toggle, "Menu:", menu);
+    }
+  });
+</script>
+
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-overlay"></div>

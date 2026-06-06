@@ -1394,7 +1394,7 @@ textarea {
   transform: translateY(0);
 }
 
-/* ========================================
+/* /* ========================================
    Media Queries - FIXED FOR RESPONSIVE
    ======================================== */
 
@@ -1402,9 +1402,12 @@ textarea {
 @media (max-width: 1023px) {
   .nav-toggle {
     display: flex !important;
-    z-index: 10001 !important; /* Takay hero section ke upar aaye */
-    position: relative;
-    cursor: pointer;
+    z-index: 10002 !important; /* Takay sab se top par layer rahe */
+    position: fixed !important; /* Fixed kiya takay navbar scrolled ho tab bhi click pakday */
+    right: 20px; /* Aap ke design ke mutabiq alignment adjustment */
+    top: 20px;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* FORCE TOUCH/CLICK INTERACTION */
   }
 
   .nav-menu {
