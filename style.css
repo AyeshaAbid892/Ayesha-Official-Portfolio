@@ -772,7 +772,7 @@ textarea {
   background: linear-gradient(90deg, var(--color-accent-dark), var(--color-accent));
   border-radius: 2px;
   width: 0;
-  transition: width 1.5s ease;
+transition: width 1.5s ease !important;
 }
 
 /* ========================================
