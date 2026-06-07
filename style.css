@@ -318,7 +318,7 @@ textarea {
   right: 0; 
   width: 50%; 
   height: 100%;
-  background-image: url('Ash.jpeg'); 
+  background-image: url('Ayesha.jpeg'); 
   background-size: contain; 
   background-position: bottom right;
   background-repeat: no-repeat;
@@ -618,76 +618,112 @@ textarea {
    Career Section
    ======================================== */
 
+/* --- My Journey (Career) Section Grid Layout --- */
 .career-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3xl);
+  grid-template-columns: repeat(3, 1fr); /* Desktop par teeno columns ko 3 barabar boxes me divide karega */
+  gap: var(--space-xl, 30px); /* Boxes ke darmiyan symmetric gap */
+  margin-top: 40px;
+  align-items: start;
 }
 
+/* Base Box Style (Hover ke bagair jaisa image 2 me tha) */
+.career-column {
+  background-color: #121212; /* Premium sleek dark background */
+  border: 1px solid var(--color-border, #252525); /* Default state ki muted border */
+  border-radius: 12px; /* Smooth card corners */
+  padding: var(--space-xl, 30px);
+  box-sizing: border-box;
+  transition: border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- THE GOLD HOVER EFFECT (Jaisa image 3 me tha) --- */
+.career-column:hover {
+  border-color: #d4af37; /* Royal gold highlight */
+  transform: translateY(-4px); /* Subtle smooth lift interactive effect */
+}
+
+/* Column Header Styling (Icon + Heading Line) */
 .career-heading {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: var(--space-xl);
-  color: var(--color-accent);
+  gap: 12px;
+  color: var(--color-text, #ffffff);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #252525; /* Box ke andar line divider */
 }
 
+/* SVG Icon Inside Header */
+.career-heading svg {
+  color: #d4af37; /* Icon color default gold */
+  flex-shrink: 0;
+}
+
+/* --- Timeline Layout Fix Inside Box --- */
 .timeline {
   position: relative;
-  padding-left: var(--space-xl);
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: var(--color-border);
+  border-left: 2px solid #252525; /* Muted vertical timeline line */
+  padding-left: 20px;
+  margin-left: 10px;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: var(--space-xl);
+  margin-bottom: 25px;
 }
 
 .timeline-item:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0; /* Aakhri item ka bottom margin khatam */
 }
 
+/* Timeline Gold Bullet Dots */
 .timeline-item::before {
-  content: '';
+  content: "";
   position: absolute;
-  left: calc(-1 * var(--space-xl) - 4px);
+  left: -26px; /* Timeline vertical line ke upar perfect match */
   top: 6px;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
+  background-color: #d4af37; /* Accent gold dot */
   border-radius: 50%;
-  background-color: var(--color-accent);
 }
 
+/* Text Formatting inside Boxes */
 .timeline-date {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--color-accent);
-  margin-bottom: var(--space-sm);
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #777777);
+  margin-bottom: 4px;
 }
 
 .timeline-title {
-  font-size: 1rem;
+  color: var(--color-text, #ffffff);
+  font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: var(--space-xs);
+  margin: 0 0 4px 0;
 }
 
 .timeline-place {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #a0a0a0);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* --- MOBILE & TABLET RESPONSIVE MATRIX --- */
+@media (max-width: 992px) {
+  .career-grid {
+    grid-template-columns: 1fr; /* Tablet aur mobile par boxes horizontal line ke bajaye aik dusre ke neche stack honge */
+    gap: var(--space-lg, 20px);
+  }
+  
+  .career-column {
+    padding: var(--space-lg, 20px); /* Mobile screens par compression se bachne ke liye responsive padding */
+  }
 }
 
 /* ========================================
