@@ -1124,14 +1124,15 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
             together.
           </p>
           <div class="contact-details">
-            <div class="contact-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              <span>ashiii.3303@gmail.com</span>
-            </div>
+  <div class="contact-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+    <!-- Span ko link me badal diya taake direct click ho sake -->
+    <a href="mailto:ashiii.3303@gmail.com" class="email-link">ashiii.3303@gmail.com</a>
+  </div>
             <div class="contact-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1268,7 +1269,10 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
               Upwork
             </a>
           </div>
-          <p class="footer-email">ashiii.3303@gmail.com</p>
+         <!-- Puraane <p> tag ko is updated code se replace karein -->
+<p class="footer-email">
+  <a href="mailto:ashiii.3303@gmail.com" class="footer-email-link">ashiii.3303@gmail.com</a>
+</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1278,6 +1282,77 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
   </footer>
 
  <script src="./script.js"></script>
+ <!-- Testimonials Auto-Play Slider Engine -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll('.testimonial-slide'); // Aapki slide ki class jo bhi ho
+    const dots = document.querySelectorAll('.slider-dot'); // Dots indicators ki class
+    let currentSlide = 0;
+    let slideInterval;
+
+    // Safety Check: Agar page pr testimonials na hon tu script crash na ho
+    if (slides.length === 0) return;
+
+    function showSlide(index) {
+      // Loop boundaries reset rules
+      if (index >= slides.length) currentSlide = 0;
+      if (index < 0) currentSlide = slides.length - 1;
+
+      // Tamam slides ko pehle hide karein
+      slides.forEach(slide => {
+        slide.style.display = 'none';
+        slide.classList.remove('active');
+      });
+
+      // Tamam dots ko reset karein agar active class exist karti hai
+      if (dots.length > 0) {
+        dots.forEach(dot => dot.classList.remove('active'));
+      }
+
+      // Sirf current slide aur dot ko show karein
+      slides[currentSlide].style.display = 'block';
+      slides[currentSlide].classList.add('active');
+      if (dots.length > 0 && dots[currentSlide]) {
+        dots[currentSlide].classList.add('active');
+      }
+    }
+
+    function startAutoPlay() {
+      // Pehle kisi bhi chalte huay interval ko clear karein safety k liye
+      stopAutoPlay();
+      slideInterval = setInterval(() => {
+        currentSlide++;
+        showSlide(currentSlide);
+      }, 4000); // Har 4 seconds baad auto-glide hoga
+    }
+
+    function stopAutoPlay() {
+      if (slideInterval) clearInterval(slideInterval);
+    }
+
+    // Manual Dots Clicking System
+    if (dots.length > 0) {
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+          startAutoPlay(); // Reset interval on click
+        });
+      });
+    }
+
+    // Touch support aur mouse over pr slider pause krna (Premium UX)
+    const container = document.querySelector('.testimonials-container'); // Aapka wrapper block
+    if (container) {
+      container.addEventListener('mouseenter', stopAutoPlay);
+      container.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Initialize First Run
+    showSlide(currentSlide);
+    startAutoPlay();
+  });
+</script>
  
 </body>
 </body>

@@ -773,6 +773,7 @@ textarea {
   border-radius: 2px;
   width: 0;
 transition: width 1.5s ease !important;
+
 }
 
 /* ========================================
@@ -1808,3 +1809,25 @@ transition: width 1.5s ease !important;
   }
 }
 
+.email-link {
+  color: inherit; /* Yeh aapke baqi text ka white/gray color automatic pick kar lega */
+  text-decoration: none; /* Underline khatam karne ke liye */
+  transition: color 0.3s ease;
+}
+
+/* Jab koi mouse le kar jaye to aik premium elegant gold effect aaye */
+.email-link:hover {
+  color: #c5a059; 
+}
+
+/* Footer link ka layout secure rakhne ke liye */
+.footer-email-link {
+  color: inherit; /* Jo color pehle <p> tag ka tha, wahi rahega */
+  text-decoration: none; /* Default underline hatane ke liye */
+  transition: color 0.3s ease;
+}
+
+/* Hover karne pr elegant dynamic transition color effect */
+.footer-email-link:hover {
+  color: #c5a059; /* Aapka branding gold color */
+}
