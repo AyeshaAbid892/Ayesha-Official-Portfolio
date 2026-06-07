@@ -1831,3 +1831,26 @@ transition: width 1.5s ease !important;
 .footer-email-link:hover {
   color: #c5a059; /* Aapka branding gold color */
 }
+
+/* testimonial */
+/* --- Glitch-Free Slider Structural Design Rules --- */
+.testimonials-slider {
+  overflow: hidden; /* Excess slides ko border line k bahar hide rakhne k liye */
+  width: 100%;
+}
+
+.testimonials-track {
+  display: flex;
+  width: 100%;
+  /* Bouncy elastic slider transition effect */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.testimonial-card {
+  min-width: 100%; /* Har card puri available width contain karega */
+  width: 100%;
+  box-sizing: border-box;
+  /* Kisi bhi pehle se chalte huay display rules ko clean block me convert karein */
+  display: block !important; 
+  opacity: 1 !important; 
+}

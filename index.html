@@ -1282,78 +1282,83 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
   </footer>
 
  <script src="./script.js"></script>
- <!-- Testimonials Auto-Play Slider Engine -->
+ 
+ <!-- Testimonials 4-Second Auto-Play Engine -->
+<!-- Testimonials Smooth 3-Second Slider Script -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll('.testimonial-slide'); // Aapki slide ki class jo bhi ho
-    const dots = document.querySelectorAll('.slider-dot'); // Dots indicators ki class
+    const track = document.getElementById('testimonialsTrack');
+    const slides = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.testimonial-dots .dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
     let currentSlide = 0;
     let slideInterval;
 
-    // Safety Check: Agar page pr testimonials na hon tu script crash na ho
-    if (slides.length === 0) return;
+    if (!track || slides.length === 0) return;
 
-    function showSlide(index) {
-      // Loop boundaries reset rules
-      if (index >= slides.length) currentSlide = 0;
-      if (index < 0) currentSlide = slides.length - 1;
+    function updateSliderPosition() {
+      // Loop safety checks
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
 
-      // Tamam slides ko pehle hide karein
-      slides.forEach(slide => {
-        slide.style.display = 'none';
-        slide.classList.remove('active');
-      });
+      // Track ko move karwana base on percentage width
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-      // Tamam dots ko reset karein agar active class exist karti hai
+      // Active state manage dots k liye
       if (dots.length > 0) {
         dots.forEach(dot => dot.classList.remove('active'));
-      }
-
-      // Sirf current slide aur dot ko show karein
-      slides[currentSlide].style.display = 'block';
-      slides[currentSlide].classList.add('active');
-      if (dots.length > 0 && dots[currentSlide]) {
-        dots[currentSlide].classList.add('active');
+        if (dots[currentSlide]) {
+          dots[currentSlide].classList.add('active');
+        }
       }
     }
 
+    function nextSlide() {
+      currentSlide++;
+      updateSliderPosition();
+    }
+
+    function prevSlide() {
+      currentSlide--;
+      updateSliderPosition();
+    }
+
     function startAutoPlay() {
-      // Pehle kisi bhi chalte huay interval ko clear karein safety k liye
       stopAutoPlay();
-      slideInterval = setInterval(() => {
-        currentSlide++;
-        showSlide(currentSlide);
-      }, 4000); // Har 4 seconds baad auto-glide hoga
+      slideInterval = setInterval(nextSlide, 3000); // Exact 3 Seconds Rule
     }
 
     function stopAutoPlay() {
       if (slideInterval) clearInterval(slideInterval);
     }
 
-    // Manual Dots Clicking System
+    // Manual Nav Controls
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+    }
+
+    // Dots Indicators
     if (dots.length > 0) {
       dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
           currentSlide = index;
-          showSlide(currentSlide);
-          startAutoPlay(); // Reset interval on click
+          updateSliderPosition();
+          startAutoPlay();
         });
       });
     }
 
-    // Touch support aur mouse over pr slider pause krna (Premium UX)
-    const container = document.querySelector('.testimonials-container'); // Aapka wrapper block
-    if (container) {
-      container.addEventListener('mouseenter', stopAutoPlay);
-      container.addEventListener('mouseleave', startAutoPlay);
-    }
-
-    // Initialize First Run
-    showSlide(currentSlide);
+    // Initialize layout position on load
+    updateSliderPosition();
     startAutoPlay();
   });
 </script>
- 
+
 </body>
 </body>
 
