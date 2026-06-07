@@ -461,6 +461,27 @@ textarea {
   transform: scale(1.1);
 }
 
+/* Mobile Responsive Fix */
+@media (max-width: 768px) {
+  .hero-social {
+    position: relative; /* Fixed position mobile par touch block karti hai */
+    right: auto;
+    top: auto;
+    transform: none;
+    flex-direction: row; /* Vertical se Horizontal line me change */
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-xl); /* Hero content ke neche thoda gap dene ke liye */
+    z-index: 9999 !important; /* Sab se upar rakhne ke liye */
+  }
+
+  .social-link {
+    width: 45px;  /* Mobile touch ke liye size thoda bara kiya */
+    height: 45px;
+    pointer-events: auto !important; /* Explicitly click allow karega */
+  }
+}
+
 /* ========================================
    Sections
    ======================================== */
