@@ -889,6 +889,7 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
   <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .process-section {
@@ -914,7 +915,7 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
             position: relative;
         }
 
-        /* Connector Line */
+        /* Desktop Connector Line (Horizontal) */
         .process-container::before {
             content: "";
             position: absolute;
@@ -959,6 +960,70 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
         .step-num { color: #d4af37; font-size: 12px; font-weight: bold; margin-bottom: 5px; }
         .step-name { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 5px; }
         .step-desc { color: #888; font-size: 11px; }
+
+        /* ==========================================================================
+           RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        
+        /* Tablets (Screen sizes below 768px) */
+        @media (max-width: 768px) {
+            .process-container {
+                gap: 20px;
+            }
+            .icon-box {
+                width: 75px;
+                height: 75px;
+                font-size: 24px;
+            }
+            .process-container::before {
+                top: 37px;
+            }
+            .step-name {
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile Phones (Screen sizes below 576px) */
+        @media (max-width: 576px) {
+            .process-container {
+                flex-direction: column; /* Row se Column mein convert ho jayega */
+                align-items: center;
+                gap: 40px;
+                padding-left: 20px;
+            }
+
+            /* Horizontal line ko khatam kar k Vertical Line bana di */
+            .process-container::before {
+                top: 45px;
+                bottom: 45px;
+                left: calc(50% - 10px); /* Line icons ke center mein adjust ho jaye */
+                right: auto;
+                width: 1px;
+                height: auto;
+            }
+
+            .process-item {
+                width: 100%;
+                flex-direction: row; /* Mobile par icon side par aur text side par ho jaye */
+                align-items: center;
+                text-align: left;
+                gap: 20px;
+            }
+
+            .icon-box {
+                margin-bottom: 0; /* Margin bottom khatam kyunki ab side by side hai */
+                flex-shrink: 0;
+            }
+
+            .process-text-content {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .process-item:hover .icon-box {
+                transform: translateX(10px); /* Mobile par upar ki jagah side par bounce karega */
+            }
+        }
     </style>
 </head>
 <body>
@@ -970,44 +1035,53 @@ Delivering end-to-end technical strategy—from system design to agile deploymen
         <!-- Item 1 -->
         <div class="process-item">
             <div class="icon-box"><i class="fas fa-search"></i></div>
-            <div class="step-num">1</div>
-            <div class="step-name">Discovery</div>
-            <div class="step-desc">Research & requirements</div>
+            <div class="process-text-content">
+                <div class="step-num">1</div>
+                <div class="step-name">Discovery</div>
+                <div class="step-desc">Research & requirements</div>
+            </div>
         </div>
         <!-- Item 2 -->
         <div class="process-item">
             <div class="icon-box"><i class="fas fa-layer-group"></i></div>
-            <div class="step-num">2</div>
-            <div class="step-name">Design</div>
-            <div class="step-desc">UX & visual design</div>
+            <div class="process-text-content">
+                <div class="step-num">2</div>
+                <div class="step-name">Design</div>
+                <div class="step-desc">UX & visual design</div>
+            </div>
         </div>
         <!-- Item 3 -->
         <div class="process-item">
             <div class="icon-box"><i class="fas fa-code"></i></div>
-            <div class="step-num">3</div>
-            <div class="step-name">Development</div>
-            <div class="step-desc">Build & iterate</div>
+            <div class="process-text-content">
+                <div class="step-num">3</div>
+                <div class="step-name">Development</div>
+                <div class="step-desc">Build & iterate</div>
+            </div>
         </div>
         <!-- Item 4 -->
         <div class="process-item">
             <div class="icon-box"><i class="fas fa-rocket"></i></div>
-            <div class="step-num">4</div>
-            <div class="step-name">Deployment</div>
-            <div class="step-desc">Launch & scale</div>
+            <div class="process-text-content">
+                <div class="step-num">4</div>
+                <div class="step-name">Deployment</div>
+                <div class="step-desc">Launch & scale</div>
+            </div>
         </div>
         <!-- Item 5 -->
         <div class="process-item">
             <div class="icon-box"><i class="fas fa-tools"></i></div>
-            <div class="step-num">5</div>
-            <div class="step-name">Support & Maintenance</div>
-            <div class="step-desc">Ongoing optimization</div>
+            <div class="process-text-content">
+                <div class="step-num">5</div>
+                <div class="step-name">Support & Maintenance</div>
+                <div class="step-desc">Ongoing optimization</div>
+            </div>
         </div>
     </div>
 </section>
 
 </body>
 </html>
-
   <!-- Projects Section -->
   <section class="section section-alt" id="projects">
     <div class="container">
