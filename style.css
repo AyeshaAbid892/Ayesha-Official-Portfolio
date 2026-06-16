@@ -1883,3 +1883,32 @@ transition: width 1.5s ease !important;
         display: none !important;
     }
 }
+
+/* Mobile Menu Absolute Fix */
+@media (max-width: 768px) {
+    /* Isse menu full screen solid ban jayega */
+    .mobile-nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background-color: #0a0a0a !important; /* Pure solid color */
+        z-index: 999999 !important; /*Sabse top par lane ke liye */
+        display: none; 
+    }
+
+    /* Jab menu active ho, display block */
+    .mobile-nav-menu.active {
+        display: flex !important;
+    }
+
+    /* Social icons ko force hide karna */
+    .social-links-container {
+        display: block; /* Default */
+    }
+    
+    body.menu-open .social-links-container {
+        display: none !important; /* Menu khulne par hide */
+    }
+}
