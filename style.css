@@ -1942,3 +1942,15 @@ transition: width 1.5s ease !important;
         opacity: 0 !important;
     }
 }
+
+/* Social links ko z-index kam kar ke peeche bhej do */
+.social-links-container {
+    position: relative;
+    z-index: 1 !important; /* Menu ka z-index 9999 hai, toh ye uske peeche chala jayega */
+}
+
+/* Hamburger button aur menu ko sabse upar rakho */
+.hamburger-button, .mobile-nav-menu {
+    position: relative;
+    z-index: 9999 !important;
+}
