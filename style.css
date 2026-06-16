@@ -1912,3 +1912,33 @@ transition: width 1.5s ease !important;
         display: none !important; /* Menu khulne par hide */
     }
 }
+
+/* --- MOBILE MENU OVERLAY FIX --- */
+@media (max-width: 768px) {
+    /* Mobile Menu ko full solid background aur top z-index dena */
+    .mobile-nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background-color: #0a0a0a !important; 
+        z-index: 999999 !important;
+        display: none; 
+    }
+
+    /* Jab menu active class ke saath khule */
+    .mobile-nav-menu.active {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Menu open hone par Social Links ko force hide karna */
+    body.menu-open .social-links-container {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
