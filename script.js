@@ -357,3 +357,11 @@ function initHireMeModal() {
     }
   });
 }
+
+const hamburger = document.querySelector('.hamburger-button');
+const menu = document.querySelector('.mobile-nav-menu');
+
+hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');
+    document.body.classList.toggle('menu-open'); // Ye zaroori hai!
+});

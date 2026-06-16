@@ -1856,23 +1856,30 @@ transition: width 1.5s ease !important;
 }
 
 
-/* Mobile responsive fix for navigation menu */
+/* Mobile Menu Full Solid Overlay Fix */
 @media (max-width: 768px) {
-    .menu-open .social-links-container {
-        display: none !important;
-    }
-
+    /* Menu container ko puri tarah solid aur cover karne wala banao */
     .mobile-nav-menu {
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0; /* Right se left shift kiya taake poora cover ho */
         width: 100%;
         height: 100vh;
-        background-color: #0a0a0a;
-        z-index: 9999;
-        display: flex;
+        background-color: #0a0a0a !important; /* Pure solid color */
+        z-index: 99999 !important; /* Extremely high z-index */
+        display: none; /* Default hidden */
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    /* Jab menu active ho */
+    .mobile-nav-menu.active {
+        display: flex; /* Active hone par show ho */
+    }
+
+    /* Social links container ko explicitly hidden karo jab menu active ho */
+    body.menu-open .social-links-container {
+        display: none !important;
     }
 }
