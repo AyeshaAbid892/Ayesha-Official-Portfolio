@@ -403,13 +403,6 @@ textarea {
   .hero-name {
     font-size: 3rem; /* Mobile ke liye fixed size taake bahar na nikal jaye */
   }
-
-  .hero-social {
-    position: static; /* Fixed se hata kar normal flow mein */
-    flex-direction: row;
-    margin-top: 30px;
-    transform: none;
-  }
 }
 
 .hero-description {
@@ -472,13 +465,13 @@ textarea {
     justify-content: center;
     gap: var(--space-md);
     margin-top: var(--space-xl); /* Hero content ke neche thoda gap dene ke liye */
-    z-index: 9999 !important; /* Sab se upar rakhne ke liye */
+    z-index: 1; /* Nav menu (z-index 10000) ke neeche rakha taake hamburger menu khulne par overlap na ho */
   }
 
   .social-link {
     width: 45px;  /* Mobile touch ke liye size thoda bara kiya */
     height: 45px;
-    pointer-events: auto !important; /* Explicitly click allow karega */
+    pointer-events: auto; /* Explicitly click allow karega */
   }
 }
 
@@ -1496,16 +1489,6 @@ transition: width 1.5s ease !important;
     display: block;
     width: 100%;
   }
-
-  .hero-social {
-    position: static;
-    flex-direction: row;
-    justify-content: flex-start;
-    transform: none;
-    margin-top: var(--space-2xl);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 0.5s forwards;
-  }
 }
 
 /* Tablet (Grids and Layouts adjustment) */
@@ -1664,7 +1647,7 @@ transition: width 1.5s ease !important;
 @media (max-width: 480px) {
     .contact-card-options { grid-template-columns: 1fr; }
 }
-/* Mobile responsive fix for Hero Socials */
+/* Mobile responsive fix for Hero layout */
 @media (max-width: 768px) {
     .hero {
         display: flex;
@@ -1672,15 +1655,6 @@ transition: width 1.5s ease !important;
         justify-content: center;
         align-items: center;
         padding-bottom: 50px; 
-    }
-
-    .hero-social {
-        position: relative !important; 
-        margin-top: 30px !important;  
-        display: flex !important;
-        justify-content: center;
-        gap: 15px;
-        z-index: 1; 
     }
 }
 
@@ -1796,38 +1770,6 @@ transition: width 1.5s ease !important;
     text-decoration: none;
 }
 
-/* --- Mobile Social Icons Fix --- */
-@media (max-width: 768px) {
-  .hero-social {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: var(--space-md) !important;
-    margin: var(--space-xl) auto 0 auto !important; 
-    z-index: 99999 !important; 
-  }
-
-  .social-link {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 48px !important;  
-    height: 48px !important;
-    position: relative !important;
-    z-index: 100000 !important;
-    pointer-events: auto !important; 
-    touch-action: manipulation !important; 
-  }
-
-  .hero-social * {
-    pointer-events: auto !important;
-  }
-}
-
 .email-link {
   color: inherit; /* Yeh aapke baqi text ka white/gray color automatic pick kar lega */
   text-decoration: none; /* Underline khatam karne ke liye */
@@ -1858,32 +1800,392 @@ transition: width 1.5s ease !important;
   width: 100%;
 }
 
-/* --- FINAL & COMPLETE MOBILE OVERLAY FIX --- */
+/* ========================================
+   Digital Arsenal / Tooling Section
+   (moved from inline <style> in index.html)
+   ======================================== */
 
-/* Jab menu open ho, toh social links ka container hide ho jaye */
-body.menu-open .hero-social {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
+.arsenal-section {
+  background-color: #0a0a0a;
+  padding: 80px 20px;
+  overflow: hidden;
+  text-align: center;
+  font-family: sans-serif;
 }
 
-/* Ensure mobile menu pure solid aur top pe ho */
-@media (max-width: 768px) {
-    .mobile-nav-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100vh !important;
-        background-color: #0a0a0a !important;
-        z-index: 999999 !important;
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.arsenal-section .section-header {
+  color: #d4af37;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
 
-    .mobile-nav-menu.active {
-        display: flex !important;
-    }
+.arsenal-section .section-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.marquee-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row-1 { animation: scrollLeft 35s linear infinite; }
+.row-2 { animation: scrollRight 35s linear infinite; }
+
+@keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.tool-card {
+  background: #121212;
+  border: 1px solid #222;
+  padding: 20px;
+  border-radius: 15px;
+  width: 120px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.tool-card:hover {
+  border-color: #d4af37;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}
+.icon { font-size: 24px; color: #d4af37; margin-bottom: 10px; }
+.name { color: #fff; font-size: 9px; font-weight: bold; letter-spacing: 1px; }
+
+/* ========================================
+   Our Process Section
+   (moved from inline <style> in index.html)
+   ======================================== */
+
+.process-section {
+  background-color: #0a0a0a;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.process-title {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 70px;
+  font-weight: 300;
+}
+
+.process-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Desktop Connector Line (Horizontal) */
+.process-container::before {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: #222;
+  z-index: 0;
+}
+
+.process-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-box {
+  background: #121212;
+  border: 1px solid #222;
+  width: 90px;
+  height: 90px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #d4af37;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+}
+
+.process-item:hover .icon-box {
+  border-color: #d4af37;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}
+
+.step-num { color: #d4af37; font-size: 12px; font-weight: bold; margin-bottom: 5px; }
+.step-name { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+.step-desc { color: #888; font-size: 11px; }
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (Our Process section)
+   ========================================================================== */
+
+/* Tablets (Screen sizes below 768px) */
+@media (max-width: 768px) {
+  .process-container {
+    gap: 20px;
+  }
+  .icon-box {
+    width: 75px;
+    height: 75px;
+    font-size: 24px;
+  }
+  .process-container::before {
+    top: 37px;
+  }
+  .step-name {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Phones (Screen sizes below 576px) */
+@media (max-width: 576px) {
+  .process-container {
+    flex-direction: column; /* Row se Column mein convert ho jayega */
+    align-items: center;
+    gap: 40px;
+    padding-left: 20px;
+  }
+
+  /* Horizontal line ko khatam kar k Vertical Line bana di */
+  .process-container::before {
+    top: 45px;
+    bottom: 45px;
+    left: calc(50% - 10px); /* Line icons ke center mein adjust ho jaye */
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .process-item {
+    width: 100%;
+    flex-direction: row; /* Mobile par icon side par aur text side par ho jaye */
+    align-items: center;
+    text-align: left;
+    gap: 20px;
+  }
+
+  .icon-box {
+    margin-bottom: 0; /* Margin bottom khatam kyunki ab side by side hai */
+    flex-shrink: 0;
+  }
+
+  .process-text-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process-item:hover .icon-box {
+    transform: translateX(10px); /* Mobile par upar ki jagah side par bounce karega */
+  }
+}
+
+/* ========================================
+   Experience Section
+   (moved from inline <style> in index.html)
+   ======================================== */
+
+#experience {
+  padding: 100px 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  scroll-margin-top: 80px;
+}
+
+.exp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.exp-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.exp-subtitle {
+  color: #c5a059;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.exp-title {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.category-title {
+  color: #c5a059;
+  font-size: 24px;
+  border-bottom: 1px solid #1f1f1f;
+  padding-bottom: 10px;
+  margin: 40px 0 25px 0;
+  text-align: left;
+  font-weight: 400;
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.exp-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.exp-card {
+  background: #111111;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 30px;
+  transition: 0.3s ease;
+  position: relative;
+  height: 100%;
+}
+
+.exp-card:hover {
+  border-color: #c5a059;
+  transform: translateY(-8px);
+  background: #161616;
+}
+
+.company-logo {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #1a1a1a;
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+.exp-date {
+  color: #c5a059;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.exp-role {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 5px;
+  padding-right: 60px;
+}
+
+.exp-org {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.cert-badge {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #c5a059;
+  transition: 0.3s;
+}
+
+.exp-card:hover .cert-badge {
+  text-decoration: underline;
+}
+
+.exp-desc {
+  color: #aaaaaa;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Client Marquee Section
+   (moved from inline <style> in index.html)
+   ======================================== */
+
+.client-marquee-wrapper {
+  background-color: #000000;
+  padding: 80px 0;
+  overflow: hidden;
+  border-top: 1px solid #1a1a1a;
+}
+
+.client-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.client-header p {
+  color: #c5a059;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.client-header h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-family: 'Playfair Display', serif;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLogos 25s linear infinite;
+  align-items: center;
+}
+
+.logo-item {
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-item img {
+  width: 150px;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-item img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
