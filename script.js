@@ -367,13 +367,11 @@ hamburger.addEventListener('click', () => {
 });
 
 
-/* --- HAMBURGER MENU TOGGLE FIX --- */
-const hamburger = document.querySelector('.hamburger-button'); // Apne button ki class check kar lena
+/* --- FINAL JS FIX --- */
+const hamburger = document.querySelector('.hamburger-button'); 
 const menu = document.querySelector('.mobile-nav-menu');
 
 hamburger.addEventListener('click', () => {
-    // Menu ko toggle kare
     menu.classList.toggle('active');
-    // Body par 'menu-open' class add/remove kare taake CSS hide kaam kare
     document.body.classList.toggle('menu-open');
 });
