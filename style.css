@@ -457,23 +457,25 @@ textarea {
 /* Mobile Responsive Fix */
 @media (max-width: 768px) {
   .hero-social {
-    position: relative; /* Fixed position mobile par touch block karti hai */
+    position: relative;
     right: auto;
     top: auto;
     transform: none;
-    flex-direction: row; /* Vertical se Horizontal line me change */
+    flex-direction: row;
     justify-content: center;
     gap: var(--space-md);
-    margin-top: var(--space-xl); /* Hero content ke neche thoda gap dene ke liye */
-    z-index: 1; /* Nav menu (z-index 10000) ke neeche rakha taake hamburger menu khulne par overlap na ho */
+    margin-top: var(--space-xl);
+    z-index: 100; /* Isay 1 se 100 kar dein */
+    pointer-events: auto; /* Ye ensure karega ki clicks block na hon */
   }
+}
 
   .social-link {
     width: 45px;  /* Mobile touch ke liye size thoda bara kiya */
     height: 45px;
     pointer-events: auto; /* Explicitly click allow karega */
   }
-}
+
 
 /* ========================================
    Sections
